@@ -2,18 +2,19 @@
 
 This repository hosts the GitHub Pages ePortfolio for the CS 499 Computer Science Capstone.
 
-## Module Five Publication
+## Module Six Publication
 
-The current publication includes:
+Published sections:
 
-- a professional home page;
-- the Software Design and Engineering enhancement page;
-- original and enhanced artifact downloads;
-- the Milestone Two narrative;
-- screenshots and direct webpage narrative content.
+- Software Design and Engineering enhancement
+- Algorithms and Data Structures enhancement
+- Original and enhanced artifact downloads
+- Milestone narratives
+- Dashboard screenshots
+- Representative code-change screenshots incorporated in response to instructor feedback
 
-Later course modules will add Algorithms and Data Structures, Databases, the Professional Self-Assessment, and the corrected code-review video.
+The Databases enhancement, Professional Self-Assessment, and corrected Code Review will be added for the final portfolio.
 
-## Publishing
+## GitHub Pages
 
-Upload all files and folders in this package to the root of the `CS499-ePortfolio` repository. GitHub Pages should deploy from the `main` branch and the repository root.
+The site is designed as a navigable portfolio rather than a raw file listing. Repository resources are linked with relative paths so the site remains portable within the project.
