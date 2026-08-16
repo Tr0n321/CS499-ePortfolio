@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Database enhancement for Patrick Harrington's CS 499 ePortfolio.">
+<title>Databases | Patrick Harrington</title><link rel="stylesheet" href="styles.css"></head>
+<body><a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header"><div class="nav-wrap">
+<a class="brand" href="index.html">Patrick Harrington · CS ePortfolio</a>
+<nav aria-label="Primary navigation">
+<a href="index.html">Home</a><a href="self-assessment.html">Self-Assessment</a>
+<a href="software-engineering.html">Software Engineering</a>
+<a href="algorithms-data-structures.html">Algorithms & Data Structures</a>
+<a href="databases.html" aria-current="page">Databases</a><a href="code-review.html">Code Review</a>
+</nav></div></header>
+<main id="main">
+<section class="hero"><div class="eyebrow">Enhancement Three</div>
+<h1>Databases</h1>
+<p>The MongoDB repository was strengthened with schema-aware validation, managed indexes, safer single-record mutations, bounded reads, server-side aggregation, audit metadata, database-specific exceptions, and non-sensitive health reporting.</p>
+<div class="actions"><a class="button" href="#enhancement">Review the Enhancement</a><a class="button secondary" href="#downloads">Download Files</a></div>
+</section>
+<section class="section two-col">
+<div><h2>Artifact Overview</h2>
+<p>The Grazioso Salvare dashboard uses MongoDB as its persistent data layer and an <code>AnimalShelter</code> repository to separate database operations from the Dash interface. Because every table, chart, filter, and map view depends on shelter records, the database is a central part of the application rather than an isolated feature.</p>
+<p>The final database enhancement focuses on data integrity, predictable behavior, query efficiency, security, and maintainability while preserving the client/server functionality developed in the original CS-340 artifact.</p></div>
+<aside class="card"><h3>Why This Enhancement</h3><p>The original CRUD layer worked for the classroom assignment, but a professional repository also needs validation, bounded access, explicit failure modes, carefully selected indexes, safe mutations, and database-side processing. These improvements make the artifact more suitable for real application maintenance.</p></aside>
+</section>
+<section id="enhancement" class="section"><h2>Enhancement Summary</h2><div class="grid">
+<article class="card"><h3>Schema-Aware Validation</h3><p>Required identifiers are checked, strings are normalized, numeric fields are validated, and unsafe field names containing MongoDB operator syntax are rejected before data reaches the database.</p></article>
+<article class="card"><h3>Managed Indexes</h3><p>A unique partial index protects <code>animal_id</code>, while compound indexes support common breed and rescue-filter access patterns. The design explicitly recognizes the storage and write-cost trade-off of indexing.</p></article>
+<article class="card"><h3>Safe CRUD Mutations</h3><p>Updates and deletes require one <code>animal_id</code> and operate on a single record, reducing the risk of accidental broad modification or deletion.</p></article>
+<article class="card"><h3>Bounded Reads</h3><p>Read limits are constrained to a safe range, projections are supported, and sorting is limited to an allow-list of meaningful fields rather than accepting arbitrary sort requests.</p></article>
+<article class="card"><h3>Server-Side Aggregation</h3><p>Breed counts use MongoDB pipeline stages including match, group, sort, limit, and project, reducing unnecessary data transfer to Python.</p></article>
+<article class="card"><h3>Audit & Health Information</h3><p>Creates and updates receive UTC timestamps, and a non-sensitive health method reports database, collection, estimated record count, and index names without exposing credentials.</p></article>
+</div></section>
+<section class="section"><h2>Representative Code Changes</h2>
+<p>These examples highlight database changes from the actual Milestone Four enhanced artifact and provide visual evidence of the implementation.</p>
+<div class="code-gallery">
+<figure><img src="assets/images/db-validation.png" alt="Code screenshot showing database input validation."><figcaption><strong>Validation:</strong> unsafe fields, invalid types, and missing required values are rejected.</figcaption></figure>
+<figure><img src="assets/images/db-indexes.png" alt="Code screenshot showing MongoDB index definitions."><figcaption><strong>Indexes:</strong> uniqueness and common dashboard access patterns are explicitly supported.</figcaption></figure>
+<figure><img src="assets/images/db-safe-mutations.png" alt="Code screenshot showing safe single-record update behavior."><figcaption><strong>Safe mutations:</strong> updates require an animal identifier and report not-found conditions clearly.</figcaption></figure>
+<figure><img src="assets/images/db-aggregation.png" alt="Code screenshot showing server-side MongoDB breed aggregation."><figcaption><strong>Aggregation:</strong> MongoDB performs grouping and ranking before results are returned to Python.</figcaption></figure>
+<figure><img src="assets/images/db-tests.png" alt="Code screenshot showing database enhancement unit tests."><figcaption><strong>Testing:</strong> bounded reads and non-sensitive health reporting are verified automatically.</figcaption></figure>
+</div></section>
+<section class="section narrative"><h2>Narrative and Reflection</h2>
+<h3>Skills Demonstrated</h3><p>This enhancement demonstrates MongoDB repository design, CRUD safety, query validation, indexing, aggregation pipelines, projections, audit metadata, exception design, testing, and secure handling of database information.</p>
+<h3>Course Outcome Alignment</h3><p>The strongest alignment is with Outcome Four through the practical use of MongoDB, PyMongo, validation, indexes, aggregation, logging, and automated tests, and Outcome Five through secure configuration, safer mutations, bounded access, validation, and non-sensitive health reporting. It also supports Outcome Three through explicit trade-offs involving indexes and database-side processing, and Outcome Two through documentation and visual presentation.</p>
+<h3>Learning and Challenges</h3><p>The database enhancement showed that reliability comes from enforcing rules at the repository boundary instead of assuming every caller will provide safe input. It also reinforced that optimization has trade-offs: indexes improve common reads but increase storage and write overhead, while server-side aggregation reduces transferred data but introduces database-specific logic that must be tested and documented.</p>
+</section>
+<section id="downloads" class="section"><h2>Artifact Downloads</h2><div class="downloads">
+<div class="download"><strong>Original Artifact</strong><p>The original CS-340 notebook and CRUD implementation.</p><a href="downloads/Grazioso_Salvare_Original_Artifact.zip">Download original artifact</a></div>
+<div class="download"><strong>Database Enhanced Artifact</strong><p>The cumulative project through the final Databases enhancement.</p><a href="downloads/Grazioso_Salvare_Databases_Enhanced.zip">Download enhanced artifact</a></div>
+<div class="download"><strong>Full Narrative</strong><p>The Milestone Four Database enhancement narrative.</p><a href="downloads/Database_Enhancement_Narrative_Patrick_Harrington.docx">Download narrative</a></div>
+</div></section></main>
+<footer class="site-footer">Patrick Harrington · CS 499 Computer Science Capstone · Southern New Hampshire University</footer></body></html>
